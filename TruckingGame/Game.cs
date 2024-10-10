@@ -91,6 +91,8 @@ namespace TruckingGame
         private Shader objectShader;
         private Shader defaultShader;
 
+        private Texture truckTexture;
+
         private float objMove = -5;
 
         protected override void OnLoad()
@@ -98,16 +100,18 @@ namespace TruckingGame
             Console.WriteLine("Loading assets");
 
             GL.ClearColor(0.75f, 0.75f, 0.75f, 1.0f);
-            GL.Enable(EnableCap.DepthTest | EnableCap.CullFace);
-            GL.CullFace(CullFaceMode.Front);
+            GL.Enable(EnableCap.DepthTest);
+           // GL.CullFace(CullFaceMode.Back);
 
             lightShader = new Shader("Shaders/VertShader.glsl", "Shaders/LightShader.glsl");
             objectShader = new Shader("Shaders/VertShader.glsl", "Shaders/ObjectShader.glsl");
-            defaultShader = new Shader("Shaders/VertShader.glsl", "Shaders/FragShader.glsl");
+            //defaultShader = new Shader("Shaders/VertShader.glsl", "Shaders/FragShader.glsl");
 
             lightMesh = new Mesh("Assets/cube.obj");
 
             objectMesh = new Mesh("Assets/Truck/truck.obj");
+            truckTexture = new Texture("Assets/Truck/31DABC74.png");
+
             //objectMesh.Position = new Vector3(-50, 0, 0);
 
             objectMeshBboxLine = new Line(objectMesh.BoundingBox.Min, objectMesh.BoundingBox.Max);
@@ -159,10 +163,12 @@ namespace TruckingGame
             //objectShader.SetVector3("lightPos", lightMesh.Position);
             //objectShader.SetVector3("objColor", new Vector3(0.2f, 0.1f, 1.0f));
             //objectShader.SetVector3("viewPos", _camera.Position);
-            defaultShader.Use();
-            objectMesh.Draw(_camera, defaultShader);
+            
+            //defaultShader.Use();
 
-            objectMeshBboxLine.Draw(_camera);
+            objectMesh.Draw(_camera, objectShader);
+
+            //objectMeshBboxLine.Draw(_camera);
 
             SwapBuffers();
             base.OnRenderFrame(args);

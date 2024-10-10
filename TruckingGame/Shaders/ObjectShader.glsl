@@ -4,6 +4,7 @@ out vec4 FragColor;
 
 in vec3 Normal;  
 in vec3 Position;  
+in vec2 TexCoord;
 
 struct Material {
     vec3 ambient;
@@ -16,6 +17,8 @@ uniform vec3 objColor; //The color of the object.
 uniform vec3 lightColor; //The color of the light.
 uniform vec3 lightPos; //The position of the light.
 uniform vec3 viewPos; //The position of the view and/or of the player.
+
+uniform sampler2D objTexture;
   
 void main()
 {
@@ -45,7 +48,7 @@ void main()
     //At last we add all the light components together and multiply with the color of the object. Then we set the color
     //and makes sure the alpha value is 1
     vec3 result = (ambient + diffuse + specular) * objColor;
-    FragColor = vec4(result, 1.0);
+    FragColor = texture(objTexture, TexCoord);
     
     //Note we still use the light color * object color from the last tutorial.
     //This time the light values are in the phong model (ambient, diffuse and specular)

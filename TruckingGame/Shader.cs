@@ -89,6 +89,8 @@ namespace TruckingGame
             GL.UniformMatrix4(_uniformLocs[uniform], false, ref value);
         }
 
+        //public void SetSampler2D(string uniform, )
+
         private void CleanUp(int vert, int frag)
         {
             GL.DetachShader(_shaderProgram, vert);

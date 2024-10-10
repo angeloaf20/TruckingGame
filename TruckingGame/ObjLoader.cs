@@ -22,6 +22,8 @@ namespace TruckingGame
 
             ReadObjFile(objPath, ref vertices);
 
+            Console.WriteLine(materialNamePairs.Count);
+
             // add an exception: 
             // 1. there was never any mtl file because the mesh/model has no materials
             // 2. mtl file has a different name
@@ -46,6 +48,11 @@ namespace TruckingGame
 
                     if (data[0] == "newmtl")
                     {
+                        if (currentMaterialName != "")
+                        {
+                            materials.Add(currentMaterialName, currentMat);
+                        }
+
                         currentMaterialName = data[1];
                     }
 
@@ -58,8 +65,6 @@ namespace TruckingGame
                     {
                         if (float.TryParse(data[1], out float x) && float.TryParse(data[2], out float y) && float.TryParse(data[3], out float z))
                             currentMat.Ambient = new Vector3(x, y, z);
-
-                        Console.WriteLine(currentMat.Ambient.X + " " + currentMat.Ambient.Y + " " + currentMat.Ambient.Z);
                     }
 
                     if (data[0] == "Ks")
@@ -83,10 +88,7 @@ namespace TruckingGame
                     {
                         // make the file path local just in case (?)
                         //string[] newPath = data[1].Split('/');
-                        currentMat.TextureMap = data[1];
-
-                        materials.Add(currentMaterialName, currentMat);
-                    }
+                        currentMat.TextureMap = data[1];                    }
                 }
             }
             catch (FileNotFoundException fnfe)

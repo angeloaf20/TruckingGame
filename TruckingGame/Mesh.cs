@@ -7,13 +7,11 @@ namespace TruckingGame
     {
         private int _vao;
 
-
         public float[] Vertices = [];
         public uint[] Indices = [];
         public Box3 BoundingBox;
 
         public Vector3 Position { get; set; } = Vector3.Zero;
-
 
         public Mesh(string objPath)
         {
@@ -103,7 +101,7 @@ namespace TruckingGame
         private (Vector3, Vector3) CalculateBoundingBox()
         {
             Vector3 min = new(Vertices[0], Vertices[1], Vertices[2]);
-            Vector3 max = new(Vertices[0], Vertices[1], Vertices[2]);
+            Vector3 max = new(Vertices[3], Vertices[4], Vertices[5]);
 
             for (int i = 5; i < Vertices.Length; i += 5)
             {
