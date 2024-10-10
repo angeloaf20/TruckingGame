@@ -1,0 +1,312 @@
+# Blender 3.6.2 MTL File: 'None'
+# www.blender.org
+
+newmtl mat_101.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/0BA5A2F4.png
+
+newmtl mat_104.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/0BA5D674.png
+
+newmtl mat_106.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/0BA5D9F4.png
+
+newmtl mat_107.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31D8F3B4.png
+
+newmtl mat_108.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31D91574.png
+
+newmtl mat_109.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31D901F4.png
+
+newmtl mat_110.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31D90734.png
+
+newmtl mat_111.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31D92574.png
+
+newmtl mat_145.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAA534.png
+
+newmtl mat_149.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA9FF4.png
+
+newmtl mat_157.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA9534.png
+
+newmtl mat_158.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA8DF4.png
+
+newmtl mat_159.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAA8B4.png
+
+newmtl mat_160.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA8FB4.png
+
+newmtl mat_161.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA91B4.png
+
+newmtl mat_162.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAAA74.png
+
+newmtl mat_163.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA9A74.png
+
+newmtl mat_164.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DABC74.png
+
+newmtl mat_165.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA9374.png
+
+newmtl mat_166.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA96F4.png
+
+newmtl mat_167.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAB1B4.png
+
+newmtl mat_168.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAC1B4.png
+
+newmtl mat_169.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DABE34.png
+
+newmtl mat_170.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAB374.png
+
+newmtl mat_171.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA98B4.png
+
+newmtl mat_172.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DA9C34.png
+
+newmtl mat_173.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAA1B4.png
+map_d C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAA1B4.png
+
+newmtl mat_174.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAC6F4.png
+
+newmtl mat_175.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31DAC534.png
+
+newmtl mat_180.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31D6E7B4.png
+map_d C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31D6E7B4.png
+
+newmtl mat_4.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/angel/Documents/OldSchoolTruckingGame/Assets/Trucks/MainTruck/31D6E974.png
