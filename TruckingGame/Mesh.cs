@@ -1,5 +1,7 @@
 ﻿using OpenTK.Mathematics;
 using OpenTK.Graphics.OpenGL4;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace TruckingGame
 {
@@ -7,9 +9,11 @@ namespace TruckingGame
     {
         private int _vao;
 
-        public float[] Vertices = [];
+        public List<Vertex> Vertices;
         public uint[] Indices = [];
         public Box3 BoundingBox;
+
+        private Matrix4 Transform = Matrix4.Identity;
 
         public Vector3 Position { get; set; } = Vector3.Zero;
 
@@ -21,26 +25,10 @@ namespace TruckingGame
 
         private void PrepareVertices(string objPath)
         {
-            Vertex[] initialVerts = [.. ObjLoader.LoadMesh(objPath)];
+            Vertices = [.. ObjLoader.LoadMesh(objPath)];
 
-            List<float> floats = [];
-
-
-            foreach (var vertex in initialVerts)
-            {
-                floats.Add(vertex.Position.X);
-                floats.Add(vertex.Position.Y);
-                floats.Add(vertex.Position.Z);
-
-                floats.Add(vertex.Normal.X);
-                floats.Add(vertex.Normal.Y);
-                floats.Add(vertex.Normal.Z);
-
-                floats.Add(vertex.TexCoord.X);
-                floats.Add(vertex.TexCoord.Y);
-            }
-
-            Vertices = [.. floats.ToArray()];
+            BoundingBox = new Box3();
+            CalculateBoundingBox();
 
             /*
             Vertices = [
@@ -78,47 +66,73 @@ namespace TruckingGame
 
         private void InitMesh()
         {
-            BoundingBox = new Box3();
-            (BoundingBox.Min, BoundingBox.Max) = CalculateBoundingBox();
-
             _vao = GL.GenVertexArray();
             int vbo = GL.GenBuffer();
 
             GL.BindVertexArray(_vao);
             GL.BindBuffer(BufferTarget.ArrayBuffer, vbo);
-            GL.BufferData(BufferTarget.ArrayBuffer, Vertices.Length * sizeof(float), Vertices, BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, Unsafe.SizeOf<Vertex>() * Vertices.Count, CollectionsMarshal.AsSpan<Vertex>(Vertices).ToArray(), BufferUsageHint.StaticDraw);
 
             GL.EnableVertexAttribArray(0);
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, Unsafe.SizeOf<Vertex>(), Marshal.OffsetOf<Vertex>(nameof(Vertex.Position)));
 
             GL.EnableVertexAttribArray(1);
-            GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
+            GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, Unsafe.SizeOf<Vertex>(), Marshal.OffsetOf<Vertex>(nameof(Vertex.Normal)));
 
             GL.EnableVertexAttribArray(2);
-            GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 2 * sizeof(float));
+            GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, Unsafe.SizeOf<Vertex>(), Marshal.OffsetOf<Vertex>(nameof(Vertex.TexCoord)));
         }
 
-        private (Vector3, Vector3) CalculateBoundingBox()
+        private void CalculateBoundingBox()
         {
-            Vector3 min = new(Vertices[0], Vertices[1], Vertices[2]);
-            Vector3 max = new(Vertices[3], Vertices[4], Vertices[5]);
+            Vector3 min = new(Vertices[0].Position.X, Vertices[0].Position.Y, Vertices[0].Position.Z);
+            Vector3 max = new(Vertices[1].Position.X, Vertices[1].Position.Y, Vertices[1].Position.Z);
 
-            for (int i = 5; i < Vertices.Length; i += 5)
+            foreach (Vertex v in Vertices)
             {
-                min = Vector3.ComponentMin(min, new(Vertices[i], Vertices[i + 1], Vertices[i + 2]));
-                max = Vector3.ComponentMax(max, new(Vertices[i], Vertices[i + 1], Vertices[i + 2]));
+                min = Vector3.ComponentMin(min, v.Position);
+                max = Vector3.ComponentMax(max, v.Position);
             }
 
-            return (min, max);
+            BoundingBox.Min = min;
+            BoundingBox.Max = max;
+        }
+
+        private void UpdateBoundingBox()
+        {
+            Vector3 resultMin = new Vector3(
+                    BoundingBox.Min.X * Transform.M11 + BoundingBox.Min.Y * Transform.M21 + BoundingBox.Min.Z * Transform.M31 + Transform.M41,
+                    BoundingBox.Min.X * Transform.M12 + BoundingBox.Min.Y * Transform.M22 + BoundingBox.Min.Z * Transform.M32 + Transform.M42,
+                    BoundingBox.Min.X * Transform.M13 + BoundingBox.Min.Y * Transform.M23 + BoundingBox.Min.Z * Transform.M33 + Transform.M43
+                );
+
+            Vector3 resultMax = new Vector3(
+                    BoundingBox.Max.X * Transform.M11 + BoundingBox.Max.Y * Transform.M21 + BoundingBox.Max.Z * Transform.M31 + Transform.M41,
+                    BoundingBox.Max.X * Transform.M12 + BoundingBox.Max.Y * Transform.M22 + BoundingBox.Max.Z * Transform.M32 + Transform.M42,
+                    BoundingBox.Max.X * Transform.M13 + BoundingBox.Max.Y * Transform.M23 + BoundingBox.Max.Z * Transform.M33 + Transform.M43
+                );
+
+            BoundingBox.Min = resultMin;
+            BoundingBox.Max = resultMax;
+        }
+
+        public void Update()
+        {
+            Transform = Matrix4.CreateTranslation(Position);
+
+            UpdateBoundingBox();
+
         }
 
         public void Draw(Camera cam, Shader shader)
         {
+            CalculateBoundingBox();
+
             shader.Use();
 
             GL.BindVertexArray(_vao);
 
-            Matrix4 model = Matrix4.CreateTranslation(Position);
+            Matrix4 model = Transform;
             Matrix4 view = cam.GetViewMatrix();
             Matrix4 proj = cam.GetProjectionMatrix();
 
@@ -126,7 +140,9 @@ namespace TruckingGame
             shader.SetMatrix4("view", view);
             shader.SetMatrix4("proj", proj);
 
-            GL.DrawArrays(PrimitiveType.Triangles, 0, Vertices.Length);
+  
+
+            GL.DrawArrays(PrimitiveType.Triangles, 0, Vertices.Count);
             //GL.DrawElements(PrimitiveType.Triangles, Indices.Length, DrawElementsType.UnsignedInt, 0);
         }
     }

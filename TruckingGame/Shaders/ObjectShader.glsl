@@ -14,8 +14,11 @@ struct Material {
 
 //In order to calculate some basic lighting we need a few things per model basis, and a few things per fragment basis:
 uniform vec3 objColor; //The color of the object.
+
 uniform vec3 lightColor; //The color of the light.
+
 uniform vec3 lightPos; //The position of the light.
+
 uniform vec3 viewPos; //The position of the view and/or of the player.
 
 uniform sampler2D objTexture;
@@ -39,7 +42,7 @@ void main()
 
     //The specular light is the light that shines from the object, like light hitting metal.
     //The calculations are explained much more detailed in the web version of the tutorials.
-    float specularStrength = 0.5;
+    float specularStrength = 0.85;
     vec3 viewDir = normalize(viewPos - Position);
     vec3 reflectDir = reflect(-lightDir, norm);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32); //The 32 is the shininess of the material.
@@ -48,7 +51,7 @@ void main()
     //At last we add all the light components together and multiply with the color of the object. Then we set the color
     //and makes sure the alpha value is 1
     vec3 result = (ambient + diffuse + specular) * objColor;
-    FragColor = texture(objTexture, TexCoord);
+    FragColor = texture(objTexture, TexCoord) * vec4(result, 1.0);
     
     //Note we still use the light color * object color from the last tutorial.
     //This time the light values are in the phong model (ambient, diffuse and specular)

@@ -82,14 +82,16 @@ namespace TruckingGame
 
         private Mesh lightMesh;
         private Mesh objectMesh;
+        private Mesh suzanneMesh;
 
         private Line objectMeshBboxLine;
+        private Line suzanneBboxLine;
 
         private readonly Camera _camera = new(Vector3.Zero, width / height);
 
         private Shader lightShader;
         private Shader objectShader;
-        private Shader defaultShader;
+        //private Shader defaultShader;
 
         private Texture truckTexture;
 
@@ -99,9 +101,9 @@ namespace TruckingGame
         {
             Console.WriteLine("Loading assets");
 
-            GL.ClearColor(0.75f, 0.75f, 0.75f, 1.0f);
+            //GL.ClearColor(0.75f, 0.75f, 0.75f, 1.0f);
             GL.Enable(EnableCap.DepthTest);
-           // GL.CullFace(CullFaceMode.Back);
+            // GL.CullFace(CullFaceMode.Back);
 
             lightShader = new Shader("Shaders/VertShader.glsl", "Shaders/LightShader.glsl");
             objectShader = new Shader("Shaders/VertShader.glsl", "Shaders/ObjectShader.glsl");
@@ -112,9 +114,12 @@ namespace TruckingGame
             objectMesh = new Mesh("Assets/Truck/truck.obj");
             truckTexture = new Texture("Assets/Truck/31DABC74.png");
 
-            //objectMesh.Position = new Vector3(-50, 0, 0);
+            suzanneMesh = new Mesh("Assets/suzanne.obj");
+
+            objectMesh.Position = new Vector3(-10, 0, 0);
 
             objectMeshBboxLine = new Line(objectMesh.BoundingBox.Min, objectMesh.BoundingBox.Max);
+            suzanneBboxLine = new Line(suzanneMesh.BoundingBox.Min, suzanneMesh.BoundingBox.Max);
             
             CursorState = CursorState.Grabbed;
 
@@ -132,13 +137,13 @@ namespace TruckingGame
 
             if (KeyboardState.IsKeyDown(Keys.Right))
             {
-                objMove += 0.05f;
+                objMove += 0.005f;
                 objectMesh.Position = new Vector3(objMove, 0, 0);
             }
 
             if (KeyboardState.IsKeyDown(Keys.Left))
             {
-                objMove -= 0.05f;
+                objMove -= 0.005f;
                 objectMesh.Position = new Vector3(objMove, 0, 0);
             }
 
@@ -148,6 +153,13 @@ namespace TruckingGame
             _camera.UpdateRotation(mouseX, mouseY);
             _camera.UpdateMovement(KeyboardState, (float)args.Time);
 
+            objectMesh.Update();
+
+            if (objectMesh.BoundingBox.Contains(suzanneMesh.BoundingBox))
+            {
+                Console.WriteLine("Colliding");
+            }
+
             base.OnUpdateFrame(args);
         }
 
@@ -155,20 +167,18 @@ namespace TruckingGame
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-            //lightShader.Use();
-            //lightMesh.Draw(_camera, lightShader);
+            lightShader.Use();
+            lightMesh.Draw(_camera, lightShader);
 
-            //objectShader.Use();
-            //objectShader.SetVector3("lightColor", new Vector3(1f));
-            //objectShader.SetVector3("lightPos", lightMesh.Position);
-            //objectShader.SetVector3("objColor", new Vector3(0.2f, 0.1f, 1.0f));
-            //objectShader.SetVector3("viewPos", _camera.Position);
-            
-            //defaultShader.Use();
+            objectShader.Use();
+            objectShader.SetVector3("lightColor", new Vector3(1f));
+            objectShader.SetVector3("lightPos", new Vector3(-10f, 5f, 0f));
+            objectShader.SetVector3("objColor", new Vector3(0.2f, 0.1f, 1.0f));
+            objectShader.SetVector3("viewPos", _camera.Position);
 
             objectMesh.Draw(_camera, objectShader);
 
-            //objectMeshBboxLine.Draw(_camera);
+            suzanneMesh.Draw(_camera, objectShader);
 
             SwapBuffers();
             base.OnRenderFrame(args);

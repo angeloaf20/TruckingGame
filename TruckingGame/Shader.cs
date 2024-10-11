@@ -18,9 +18,23 @@ namespace TruckingGame
             GL.ShaderSource(vertexShader, vertexSource);
             GL.CompileShader(vertexShader);
 
+            GL.GetShader(vertexShader, ShaderParameter.CompileStatus, out var code);
+            if (code != (int)All.True)
+            {
+                var infoLog = GL.GetShaderInfoLog(vertexShader);
+                throw new Exception($"Error occurred whilst compiling Shader({vertexShader}).\n\n{infoLog}");
+            }
+
             int fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
             GL.ShaderSource(fragmentShader, fragmentSource);
             GL.CompileShader(fragmentShader);
+
+            GL.GetShader(fragmentShader, ShaderParameter.CompileStatus, out code);
+            if (code != (int)All.True)
+            {
+                var infoLog = GL.GetShaderInfoLog(fragmentShader);
+                throw new Exception($"Error occurred whilst compiling Shader({fragmentShader}).\n\n{infoLog}");
+            }
 
             _shaderProgram = GL.CreateProgram();
             GL.AttachShader(_shaderProgram, vertexShader);
@@ -41,7 +55,7 @@ namespace TruckingGame
 
             GL.GetProgram(_shaderProgram, GetProgramParameterName.ActiveUniforms, out int numUniforms);
 
-
+            Console.WriteLine("Number of uniforms: " +  numUniforms);
 
             for (int i = 0; i < numUniforms; i++)
             {

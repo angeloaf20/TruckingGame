@@ -88,7 +88,8 @@ namespace TruckingGame
                     {
                         // make the file path local just in case (?)
                         //string[] newPath = data[1].Split('/');
-                        currentMat.TextureMap = data[1];                    }
+                        currentMat.TextureMap = data[1];                    
+                    }
                 }
             }
             catch (FileNotFoundException fnfe)
